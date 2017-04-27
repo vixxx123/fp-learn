@@ -1,4 +1,4 @@
-package com.codelouders.fp.learn.typeclasse
+package com.codelouders.fp.learn.typeclass
 
 /**
   * Created by Wiktor on 27/04/2017.
