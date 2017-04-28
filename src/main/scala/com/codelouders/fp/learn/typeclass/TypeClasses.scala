@@ -70,17 +70,17 @@ object Functor {
 
 object TestTypeClasses extends App {
 
-  def reduce[M[_]: FoldLeft, A: Monoid](xs: M[A]): A = {
+  def combine[M[_]: FoldLeft, A: Monoid](xs: M[A]): A = {
     FoldLeft[M].foldleft(xs, Monoid[A].empty)(Monoid[A].combine)
   }
 
-  println(reduce(List(1, 2 ,3, 4)))
+  println(combine(List(1, 2 ,3, 4)))
 
   def eachToString[M[_]: Functor, A](xs: M[A]): M[String] = {
     Functor[M].map[A, String](xs, t ⇒ t.toString)
   }
 
-  println(reduce(eachToString(List(1, 2 ,3, 4))))
-  println(reduce(eachToString(List(1.0, 2.0 ,3.0, 4.0))))
+  println(combine(eachToString(List(1, 2 ,3, 4))))
+  println(combine(eachToString(List(1.0, 2.0 ,3.0, 4.0))))
 
 }
